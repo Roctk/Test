@@ -17,12 +17,15 @@ public class Main{
         for (int i=0;i<10;i++)
         {
             num=new Random().nextInt(10);
-            System.out.print(num+"____");
             arr.contains(num);
+            System.out.print(num+" ");
         }
+        System.out.println();
 
 
         System.out.println(Arrays.asList(arr.get()));
         arr.add(in.next());//11
+
+        System.out.println(Arrays.asList(arr.get()));
     }
 }
