@@ -15,7 +15,7 @@ public class Main{
             System.out.print(num +" ");
         }
         System.out.println();
-        for (int i=0;i<100000;i++)
+        for (int i=0;i<10;i++)
         {
             num=new Random().nextInt(20);
             arr.contains(num);
@@ -26,6 +26,13 @@ public class Main{
 
         arr.get();
         arr.add(in.next());//11
+        arr.get();
+        arr.add(in.next());//11
+        arr.get();
+        arr.add(in.next());//11
+        arr.get();
+        arr.add(in.next());//11
+        arr.get();
 
 
     }

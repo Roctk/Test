@@ -17,6 +17,7 @@ public class Set<T> implements LimitedSet<T> {
                 if(collection.get(key).equals(Collections.min(collection.values()))) {
                     remove((T) key);
                     collection.put(t,0);
+                    break;
                 }
             }
         }
