@@ -1,4 +1,3 @@
-import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -11,21 +10,23 @@ public class Main{
         Set arr = new Set<Integer>();
         for (int i=0;i<10;i++)
         {
-            num=new Random().nextInt(10);
+            num=new Random().nextInt(20);
             arr.add(num);
+            System.out.print(num +" ");
         }
-        for (int i=0;i<10;i++)
+        System.out.println();
+        for (int i=0;i<100000;i++)
         {
-            num=new Random().nextInt(10);
+            num=new Random().nextInt(20);
             arr.contains(num);
             System.out.print(num+" ");
         }
         System.out.println();
 
 
-        System.out.println(Arrays.asList(arr.get()));
+        arr.get();
         arr.add(in.next());//11
 
-        System.out.println(Arrays.asList(arr.get()));
+
     }
 }

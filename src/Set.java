@@ -1,75 +1,43 @@
+import java.util.*;
+
 public class Set<T> implements LimitedSet<T> {
 
-    private int count;
-    private T[] collection;
-    private final static int size = 10;
-    private int incr[]=new int[10];
+    private Map collection = new HashMap<T,Integer>();
 
-    @SuppressWarnings("unchecked")
     public Set(){
-        for (int i=0;i<size;i++){
-            incr[i]=0;
-        }
-        collection = (T []) new Object [size];
-        count = 0;
     }
     @Override
     public void add(final T t) {
-        try {
-            collection[count] = t;
-            count++;
+        if(collection.size()<10){
+            collection.put(t,0);
         }
-        catch (ArrayIndexOutOfBoundsException e){
-            System.out.println(">10");
-            int indexOfMin = 0;
-            for (int i = 0; i < incr.length; i++)
-                if (incr[i] < incr[indexOfMin])
-                    indexOfMin = i;
-
-            remove(collection[indexOfMin]);
-            collection[count] = t;
-            count++;
-        }
-
-
+        else{
+            for(Object key: collection.keySet()) {
+                if(collection.get(key).equals(Collections.min(collection.values()))) {
+                    remove((T) key);
+                }
+            }
+            }
     }
-
     @Override
     public boolean remove(final T t) {
-        boolean check=true;
-        int j;
-        for (int i=0;i<count;i++){
-            if (!contains(t))
-                check = false;
-            else {
-                for (j =0; j < size; j++)
-                    if (collection[j] == t)
-                        break;
-                for (int k = j; k < size - 1; k++) //сдвиг последующих элементов
-                    collection[k] = collection[k + 1];
-                count--;
-                check = true;
-            }
-        }
-        return check;
+        collection.remove(t);
+        return true;
     }
-
+    private Integer previousValue;
     @Override
     public boolean contains(final T t) {
-        for (int i = 0; i < count; i++)
-        {
-            if (collection[i].equals(t))
-            {
-                incr[i]++;
+            if (collection.containsKey(t)){
+                previousValue = (Integer) collection.get(t);
+                collection.put(t, previousValue == null ? 1 : previousValue + 1);
                 return true;
             }
-        }
         return false;
     }
-    public T[] get(){
-        for (int i=0;i<size;i++)
-            System.out.print(incr[i]+" ");
-        System.out.println();
-        return collection;
+    public void get(){
+        List<T> keys = new ArrayList<T>(collection.keySet());
+        for (T key : keys) {
+            System.out.println(key + ", " + collection.get(key));
+        }
     }
 }
