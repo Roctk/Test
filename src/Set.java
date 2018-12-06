@@ -15,9 +15,10 @@ public class Set<T> implements LimitedSet<T> {
             for(Object key: collection.keySet()) {
                 if(collection.get(key).equals(Collections.min(collection.values()))) {
                     remove((T) key);
+                    collection.put(t,0);
                 }
             }
-            }
+        }
     }
     @Override
     public boolean remove(final T t) {
