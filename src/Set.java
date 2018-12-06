@@ -3,6 +3,7 @@ import java.util.*;
 public class Set<T> implements LimitedSet<T> {
 
     private Map collection = new HashMap<T,Integer>();
+    private Integer previousValue;
 
     public Set(){
     }
@@ -25,7 +26,7 @@ public class Set<T> implements LimitedSet<T> {
         collection.remove(t);
         return true;
     }
-    private Integer previousValue;
+
     @Override
     public boolean contains(final T t) {
             if (collection.containsKey(t)){
