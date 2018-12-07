@@ -26,6 +26,7 @@ public class Main{
 
         arr.get();
         arr.add(in.next());//11
+        arr.get();
 
 
     }

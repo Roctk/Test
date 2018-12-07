@@ -13,8 +13,10 @@ public class Set<T> implements LimitedSet<T> {
             collection.put(t,0);
         }
         else{
+            int min = (int) Collections.min(collection.values());
             for(Object key: collection.keySet()) {
-                if(collection.get(key).equals(Collections.min(collection.values()))) {
+
+                if(collection.get(key).equals(min))  {
                     remove((T) key);
                     collection.put(t,0);
                     break;
