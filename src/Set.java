@@ -34,7 +34,7 @@ public class Set<T> implements LimitedSet<T> {
     public boolean contains(final T t) {
             if (collection.containsKey(t)){
                 previousValue = (Integer) collection.get(t);
-                collection.put(t, previousValue == null ? 1 : previousValue + 1);
+                collection.put(t, previousValue + 1);
                 return true;
             }
         return false;
